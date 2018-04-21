@@ -7,15 +7,27 @@ import VueRouter from 'vue-router';
 //安装vue—router
 Vue.use(VueRouter);
 
-/* //导入vue-resource
+//导入时间插件
+import moment from "moment";
+//定义全局的时间过滤器
+Vue.filter('dataFormat',function(dataStr,patern='YYYY-MM-DD HH:mm:ss'){
+    return moment(dataStr).format(pattern)
+});
+
+//导入vue-resource
 import VueResource from "vue-resource";
 //安装
 Vue.use(VueResource)
- */
+
+//设置全局的根路由
+Vue.http.options.root = 'http://vue.studyit.io';
+
 
 //按需导入mint-ui组件
-import { Header } from 'mint-ui';
+import { Header,Swipe,SwipeItem} from 'mint-ui';
 Vue.component(Header.name, Header);
+Vue.component(Swipe.name, Swipe);
+Vue.component(SwipeItem.name, SwipeItem);
 
 //导入MUI样式
 import './lib/mui/css/mui.min.css'
